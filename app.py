@@ -15,3 +15,15 @@ if menu == "Home":
     st.write("Nombre: Carlos Piscoya")
     st.write("Módulo: Python Fundamentals")
     st.write("Descripción: Aplicación con ejercicios básicos")
+
+elif menu == "Ejercicio 1":
+     st.write("Ejercicio 1")
+
+elif menu == "Ejercicio 2":
+     st.write("Ejercicio 2")
+
+elif menu == "Ejercicio 3":
+     st.write("Ejercicio 3")
+
+else menu == "Ejercicio 4":
+     st.write("Ejercicio 4")
