@@ -133,7 +133,7 @@ elif menu == "Ejercicio 2":
 elif menu == "Ejercicio 3":
 
     import pandas as pd
-    from libreria_funciones_proyecto1 import calcular_descuento  # 👈 cambia por tu función real
+    from libreria_funciones_proyecto1 import 
 
     st.markdown("## ⚙️ Ejercicio 3 – Uso de funciones externas")
     st.markdown("Ejecuta funciones desde una librería externa y guarda resultados.")
