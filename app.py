@@ -131,7 +131,47 @@ elif menu == "Ejercicio 2":
 
 # EJERCICIO 3
 elif menu == "Ejercicio 3":
-    st.write("Bienvenido al ejercicio 3")
+
+    import pandas as pd
+    from libreria_funciones_proyecto1 import calcular_descuento  # 👈 cambia por tu función real
+
+    st.markdown("## ⚙️ Ejercicio 3 – Uso de funciones externas")
+    st.markdown("Ejecuta funciones desde una librería externa y guarda resultados.")
+
+    # Inicializar historial
+    if "historial" not in st.session_state:
+        st.session_state.historial = []
+
+    # Selector de función (aunque uses una, igual lo piden)
+    opcion = st.selectbox("Selecciona función", ["Calcular descuento"])
+
+    # Inputs (depende de tu función)
+    precio = st.number_input("Precio", min_value=0.0)
+    porcentaje = st.number_input("Porcentaje de descuento", min_value=0.0)
+
+    # Botón
+    if st.button("Ejecutar función"):
+
+        resultado = calcular_descuento(precio, porcentaje)
+
+        st.write("Resultado:", resultado)
+
+        # Guardar en historial
+        registro = {
+            "Función": opcion,
+            "Precio": precio,
+            "Porcentaje": porcentaje,
+            "Resultado": resultado
+        }
+
+        st.session_state.historial.append(registro)
+
+    # Mostrar historial
+    if st.session_state.historial:
+        df_historial = pd.DataFrame(st.session_state.historial)
+
+        st.markdown("### 📊 Historial de resultados")
+        st.dataframe(df_historial)
 
 # EJERCICIO 4
 elif menu == "Ejercicio 4":
