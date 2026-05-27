@@ -189,7 +189,7 @@ elif menu == "Ejercicio 4":
     # TABS
     tab1, tab2, tab3, tab4 = st.tabs(["Crear", "Leer", "Actualizar", "Eliminar"])
 
-    # ---------------- CREAR ----------------
+
     with tab1:
         st.subheader("➕ Crear producto")
 
@@ -212,7 +212,7 @@ elif menu == "Ejercicio 4":
             else:
                 st.error("Ingresa un nombre")
 
-    # ---------------- LEER ----------------
+   
     with tab2:
         st.subheader("📋 Lista de productos")
 
@@ -222,7 +222,7 @@ elif menu == "Ejercicio 4":
         else:
             st.warning("No hay productos")
 
-    # ---------------- ACTUALIZAR ----------------
+    
     with tab3:
         st.subheader("✏️ Actualizar producto")
 
@@ -245,7 +245,7 @@ elif menu == "Ejercicio 4":
         else:
             st.warning("No hay productos")
 
-    # ---------------- ELIMINAR ----------------
+
     with tab4:
         st.subheader("🗑️ Eliminar producto")
 
