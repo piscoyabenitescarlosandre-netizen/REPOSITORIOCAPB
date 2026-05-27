@@ -14,8 +14,6 @@ if Selecciona == "Home":
     st.write("Bienvenido a Home")
 st.image("PYTHON.png")
 
-
-
 elif Selecciona == "Ejercicio 1":
     st.write("Bienvenido al ejercicio 1")
 
