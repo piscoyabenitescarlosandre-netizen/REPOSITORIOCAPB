@@ -12,5 +12,5 @@ st.sidebar.selectbox("Ejercicio 2")
 
 st.sidebar.selectbox("Ejercicio 3")
 
-st.sidebar.selectbox("Ejercicio 4)
+st.sidebar.selectbox("Ejercicio 4")
                      
