@@ -15,24 +15,3 @@ if menu == "Home":
     st.write("Nombre: Carlos Piscoya")
     st.write("Módulo: Python Fundamentals")
     st.write("Descripción: Aplicación con ejercicios básicos")
-
-if menu == "Ejercicio 1":
-
-    if "movimientos" not in st.session_state:
-        st.session_state.movimientos = []
-
-    concepto = st.text_input("Concepto")
-    tipo = st.selectbox("Tipo", ["Ingreso", "Gasto"])
-    valor = st.number_input("Valor")
-
-    if st.button("Agregar"):
-        st.session_state.movimientos.append((concepto, tipo, valor))
-
-    st.write(st.session_state.movimientos)
-
-    ingresos = sum(v for c,t,v in st.session_state.movimientos if t=="Ingreso")
-    gastos = sum(v for c,t,v in st.session_state.movimientos if t=="Gasto")
-
-    st.write("Ingresos:", ingresos)
-    st.write("Gastos:", gastos)
-    st.write("Saldo:", ingresos - gastos)
