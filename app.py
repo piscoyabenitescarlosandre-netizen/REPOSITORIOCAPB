@@ -8,7 +8,7 @@ st.write("Elaborado por: Carlos Piscoya Benites")
 st.write("Módulo 1 – Python Fundamentals")
 
 
-Selecciona = st.sidebar.selectbox("Menú", ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
+menu = st.sidebar.selectbox("Menú", ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
 
 if Selecciona == "Home":
     st.write("Bienvenido a Home")
