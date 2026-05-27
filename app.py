@@ -175,4 +175,89 @@ elif menu == "Ejercicio 3":
 
 # EJERCICIO 4
 elif menu == "Ejercicio 4":
-    st.write("Bienvenido al ejercicio 4")
+
+    import pandas as pd
+    from libreria_clases_proyecto1 import Producto
+
+    st.markdown("## 🏗️ Ejercicio 4 – CRUD con clases")
+    st.markdown("Gestión de productos usando una clase externa.")
+
+    # Inicializar lista
+    if "productos" not in st.session_state:
+        st.session_state.productos = []
+
+    # TABS
+    tab1, tab2, tab3, tab4 = st.tabs(["Crear", "Leer", "Actualizar", "Eliminar"])
+
+    # ---------------- CREAR ----------------
+    with tab1:
+        st.subheader("➕ Crear producto")
+
+        nombre = st.text_input("Nombre")
+        precio = st.number_input("Precio", min_value=0.0)
+        cantidad = st.number_input("Cantidad", min_value=1)
+
+        if st.button("Agregar producto"):
+            if nombre != "":
+                nuevo = Producto(nombre, precio, cantidad)
+
+                st.session_state.productos.append({
+                    "nombre": nuevo.nombre,
+                    "precio": nuevo.precio,
+                    "cantidad": nuevo.cantidad,
+                    "total": nuevo.total()
+                })
+
+                st.success("Producto agregado ✅")
+            else:
+                st.error("Ingresa un nombre")
+
+    # ---------------- LEER ----------------
+    with tab2:
+        st.subheader("📋 Lista de productos")
+
+        if st.session_state.productos:
+            df = pd.DataFrame(st.session_state.productos)
+            st.dataframe(df)
+        else:
+            st.warning("No hay productos")
+
+    # ---------------- ACTUALIZAR ----------------
+    with tab3:
+        st.subheader("✏️ Actualizar producto")
+
+        if st.session_state.productos:
+
+            nombres = [p["nombre"] for p in st.session_state.productos]
+            seleccionado = st.selectbox("Selecciona producto", nombres)
+
+            nuevo_precio = st.number_input("Nuevo precio", min_value=0.0)
+            nueva_cantidad = st.number_input("Nueva cantidad", min_value=1)
+
+            if st.button("Actualizar"):
+                for p in st.session_state.productos:
+                    if p["nombre"] == seleccionado:
+                        p["precio"] = nuevo_precio
+                        p["cantidad"] = nueva_cantidad
+                        p["total"] = nuevo_precio * nueva_cantidad
+
+                st.success("Producto actualizado ✅")
+        else:
+            st.warning("No hay productos")
+
+    # ---------------- ELIMINAR ----------------
+    with tab4:
+        st.subheader("🗑️ Eliminar producto")
+
+        if st.session_state.productos:
+
+            nombres = [p["nombre"] for p in st.session_state.productos]
+            eliminar = st.selectbox("Selecciona producto", nombres)
+
+            if st.button("Eliminar"):
+                st.session_state.productos = [
+                    p for p in st.session_state.productos if p["nombre"] != eliminar
+                ]
+                st.success("Producto eliminado ✅")
+        else:
+            st.warning("No hay productos")
