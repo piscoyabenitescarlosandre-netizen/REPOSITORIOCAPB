@@ -12,6 +12,9 @@ Selecciona = st.sidebar.selectbox("Menú", ["Home", "Ejercicio 1", "Ejercicio 2"
 
 if Selecciona == "Home":
     st.write("Bienvenido a Home")
+st.image(PYTHON.PNG)
+
+
 
 elif Selecciona == "Ejercicio 1":
     st.write("Bienvenido al ejercicio 1")
