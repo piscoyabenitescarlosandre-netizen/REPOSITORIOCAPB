@@ -10,20 +10,15 @@ st.write("Módulo 1 – Python Fundamentals")
 
 Selecciona = st.sidebar.selectbox("Menú", ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
 
-if Señecciona == "Home":
-    st.title("Mi Proyecto en Streamlit")
-    st.write("Nombre: Carlos Piscoya")
-    st.write("Módulo: Python Fundamentals")
-    st.write("Descripción: Aplicación con ejercicios básicos")
-
-elif Selecciona == "Ejercicio 1":
-     st.write("Ejercicio 1")
+if Selecciona == "Ejercicio 1":
+    st.write("Bienvenido al ejercicio 1")
 
 elif Selecciona == "Ejercicio 2":
-     st.write("Ejercicio 2")
+    st.write("Bienvenido al ejercicio 2")
 
 elif Selecciona == "Ejercicio 3":
-     st.write("Ejercicio 3")
+    st.write("Bienvenido al ejercicio 3")
 
-else :
-     st.write("Ejercicio 4")
+else:
+    st.write("Bienvenido al ejercicio 4")
+    
