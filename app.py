@@ -1,25 +1,30 @@
 import streamlit as st
 
-st.title ("PROYECTO 1 – APLICACIÓN EN STREAMLIT")
+st.title("PROYECTO 1 – APLICACIÓN EN STREAMLIT")
 
 st.sidebar.title("Selecciona")
 
 st.write("Elaborado por: Carlos Piscoya Benites")
 st.write("Módulo 1 – Python Fundamentals")
 
+# SOLO UNA VARIABLE
+menu = st.sidebar.selectbox(
+    "Menú",
+    ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"]
+)
 
-menu = st.sidebar.selectbox("Menú", ["Home", "Ejercicio 1", "Ejercicio 2", "Ejercicio 3", "Ejercicio 4"])
-
-if Selecciona == "Home":
+# HOME
+if menu == "Home":
     st.write("Bienvenido a Home")
-    st.image("PYTHON.png") 
+    st.image("PYTHON.png")
 
+# EJERCICIO 1
 elif menu == "Ejercicio 1":
 
     st.markdown("## 💰 Ejercicio 1 – Flujo de caja con listas")
     st.markdown("Registra ingresos y gastos y calcula el estado financiero.")
 
-    # Inicializar lista en memoria
+    # Inicializar lista
     if "movimientos" not in st.session_state:
         st.session_state.movimientos = []
 
@@ -41,12 +46,11 @@ elif menu == "Ejercicio 1":
         else:
             st.error("Completa todos los campos correctamente")
 
-    # Mostrar tabla
+    # Mostrar datos
     if st.session_state.movimientos:
         st.markdown("### 📋 Movimientos registrados")
         st.dataframe(st.session_state.movimientos)
 
-        # Cálculos
         ingresos = sum(m["valor"] for m in st.session_state.movimientos if m["tipo"] == "Ingreso")
         gastos = sum(m["valor"] for m in st.session_state.movimientos if m["tipo"] == "Gasto")
         saldo = ingresos - gastos
@@ -57,7 +61,6 @@ elif menu == "Ejercicio 1":
         st.metric("Total Gastos", gastos)
         st.metric("Saldo Final", saldo)
 
-        # Estado
         if saldo > 0:
             st.success("Flujo de caja a favor ✅")
         elif saldo < 0:
@@ -65,12 +68,14 @@ elif menu == "Ejercicio 1":
         else:
             st.warning("Flujo de caja equilibrado ⚖️")
 
-elif Selecciona == "Ejercicio 2":
+# EJERCICIO 2
+elif menu == "Ejercicio 2":
     st.write("Bienvenido al ejercicio 2")
 
-elif Selecciona == "Ejercicio 3":
+# EJERCICIO 3
+elif menu == "Ejercicio 3":
     st.write("Bienvenido al ejercicio 3")
 
-else:
+# EJERCICIO 4
+elif menu == "Ejercicio 4":
     st.write("Bienvenido al ejercicio 4")
-    
