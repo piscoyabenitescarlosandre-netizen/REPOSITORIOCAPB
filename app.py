@@ -70,7 +70,64 @@ elif menu == "Ejercicio 1":
 
 # EJERCICIO 2
 elif menu == "Ejercicio 2":
-    st.write("Bienvenido al ejercicio 2")
+
+    import numpy as np
+    import pandas as pd
+
+    st.markdown("## 📦 Ejercicio 2 – Registro con NumPy y DataFrame")
+    st.markdown("Registra productos y visualiza los datos en un DataFrame.")
+
+    # Inicializar arrays en session_state
+    if "nombres" not in st.session_state:
+        st.session_state.nombres = []
+        st.session_state.categorias = []
+        st.session_state.precios = []
+        st.session_state.cantidades = []
+        st.session_state.totales = []
+
+    # Inputs
+    nombre = st.text_input("Nombre del producto")
+    categoria = st.selectbox("Categoría", ["Electrónica", "Ropa", "Alimentos", "Otros"])
+    precio = st.number_input("Precio", min_value=0.0, step=1.0)
+    cantidad = st.number_input("Cantidad", min_value=1, step=1)
+
+    total = precio * cantidad
+
+    # Botón
+    if st.button("Agregar registro"):
+        if nombre != "" and precio > 0 and cantidad > 0:
+
+            st.session_state.nombres.append(nombre)
+            st.session_state.categorias.append(categoria)
+            st.session_state.precios.append(precio)
+            st.session_state.cantidades.append(cantidad)
+            st.session_state.totales.append(total)
+
+            st.success("Registro agregado correctamente")
+        else:
+            st.error("Completa todos los campos correctamente")
+
+    # Mostrar DataFrame
+    if st.session_state.nombres:
+
+        # Convertir a arrays de NumPy
+        nombres_np = np.array(st.session_state.nombres)
+        categorias_np = np.array(st.session_state.categorias)
+        precios_np = np.array(st.session_state.precios)
+        cantidades_np = np.array(st.session_state.cantidades)
+        totales_np = np.array(st.session_state.totales)
+
+        # Crear DataFrame
+        df = pd.DataFrame({
+            "Producto": nombres_np,
+            "Categoría": categorias_np,
+            "Precio": precios_np,
+            "Cantidad": cantidades_np,
+            "Total": totales_np
+        })
+
+        st.markdown("### 📊 Registros")
+        st.dataframe(df)
 
 # EJERCICIO 3
 elif menu == "Ejercicio 3":
