@@ -25,5 +25,5 @@ elif menu == "Ejercicio 2":
 elif menu == "Ejercicio 3":
      st.write("Ejercicio 3")
 
-else menu == "Ejercicio 4":
+else :
      st.write("Ejercicio 4")
